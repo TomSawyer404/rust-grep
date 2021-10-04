@@ -65,6 +65,8 @@ fn filte_pattern(buffer: &[u8], pattern: &str) {
         .lines()
         .filter(|x| x.as_ref().unwrap().contains(pattern))
     {
-        println!("{}{}{}", "\x1b[31m", i.unwrap(), "\x1b[0m");
+        let replaced_str = format!("{}{}{}", "\x1b[31m", pattern, "\x1b[0m");
+        let i = i.unwrap().replace(pattern, replaced_str.as_str());
+        println!("{}", i);
     }
 }
